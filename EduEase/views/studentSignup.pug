@@ -1,129 +1,77 @@
-﻿doctype html
+doctype html
 html
   head
+    title ExpressDelivery
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    // <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    meta(name='viewport', content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab', rel='stylesheet', type='text/css')
     style.
-      body {font-family: Arial, Helvetica, sans-serif;}
-      * {box-sizing: border-box;}
-      /* Full-width input fields */
-      input[type=text], input[type=password] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-      }
-      /* Add a background color when the inputs get focus */
-      input[type=text]:focus, input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-      }
-      /* Set a style for all buttons */
-      button {
-      background-color: #4CAF50;
+      .custom_button {
+      background-color: #474e5d;
       color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
+      /*padding: 5px;*/
+      /*margin: 2px 0px;*/
       border: none;
       cursor: pointer;
       width: 100%;
       opacity: 0.9;
       }
-      button:hover {
-      opacity:1;
-      }
-      /* Extra styles for the cancel button */
-      .cancelbtn {
-      padding: 14px 20px;
-      background-color: #f44336;
-      }
-      /* Float cancel and signup buttons and add an equal width */
-      .cancelbtn, .signupbtn {
-      float: left;
+      input[type=text], input[type=password] {
       width: 50%;
+      /*padding: 15px;*/
+      /*margin: 2px 0 10px 0;*/
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+      min-width: 100%;
+      max-width: 100%;
       }
-      /* Add padding to container elements */
-      .container {
-      padding: 16px;
+      /* Add a background color when the inputs get focus */
+      input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+      /*min-width: 100%;*/
+      /*max-width: 100%;*/
       }
-      /* The Modal (background) */
-      .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: #474e5d;
-      padding-top: 50px;
-      }
-      /* Modal Content/Box */
-      .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-      border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
-      }
-      /* Style the horizontal ruler */
       hr {
       border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
+      margin-bottom: 10px;
       }
-      /* The Close Button (x) */
-      .close {
-      position: absolute;
-      right: 35px;
-      top: 15px;
-      font-size: 40px;
-      font-weight: bold;
-      color: #f1f1f1;
-      }
-      .close:hover,
-      .close:focus {
-      color: #f44336;
-      cursor: pointer;
-      }
-      /* Clear floats */
       .clearfix::after {
       content: "";
       clear: both;
       display: table;
       }
-      /* Change styles for cancel button and signup button on extra small screens */
-      @media screen and (max-width: 300px) {
-      .cancelbtn, .signupbtn {
-      width: 100%;
-      }
+      .our-form{
+      max-width: 50%;
+      margin-left: 2%;
+      padding: 7px;
       }
   body
-    h2 Student Signup Form
-    button(onclick="document.getElementById('id01').style.display='block'", style='width:auto;') Sign Up
-    #id01.modal
-      span.close(onclick="document.getElementById('id01').style.display='none'", title='Close Modal') ×
-      form.modal-content(action='/SignupStudent' method = 'POST')
-        .container
-          h1 Sign Up
-          p Please fill in this form to create an account.
-          hr
+    .row
+      img(src='../images/bg5.jpg', style='width:100%;height:100px;')
+    .row
+      // <img src= "../images/bg.png" style="width:100%;height:100%;">
+      .col-md-3
+        // <div class="row" style="display: none;" id = "hello">
+        img#hello(src='../images/hello.jpg', style='width:80%;height:80%;\
+        position: relative; display: none; margin-left: 20%;margin-top: 20%;')
+        // </div>
+        // <div class="row">
+        img#caterpillar(src='../images/caterpillar.jpg', style='width:80%;height:50%; position: relative')
+        // </div>
+      .col-md-6.our-form.modal-content
+        h3 Student Signup Form
+        form(action='/SignupStudent', method='POST')
+          // <div class="row">
           label(for='name')
             b Name
           input(type='text', placeholder='Enter Name', name='name', required='')
           label(for='username')
             b Username
           input(type='text', placeholder='Enter Username', name='username', required='')
-          label(for='age')
-            b Age
-          input(type='text', placeholder='Enter Age', name='age', required='')
-          label(for='address')
-            b Enter your Address
-          input(type='text', placeholder='Enter your Country', name='Country', required='')
-          input(type='text', placeholder='Enter your State', name='State', required='')
-          input(type='text', placeholder='Enter your City', name='City', required='')
-          input(type='text', placeholder='Enter your Street1', name='Street1', required='')
-          input(type='text', placeholder='Enter your Street2', name='Street2', required='')
-          input(type='text', placeholder='Enter your Zipcode', name='Zip', required='')
           label(for='quaification')
             b Highest Qualification
           input(type='text', placeholder='Enter Highest Education', name='qualification', required='')
@@ -143,21 +91,39 @@ html
             b Repeat Password
           input(type='password', placeholder='Repeat Password', name='psw-repeat', required='')
           label
-            input(type='checkbox', checked='checked', name='remember', style='margin-bottom:15px')
+            input(type='checkbox', checked='checked', name='remember', style='margin-bottom:15px;')
             |  Remember me
           p
             | By creating an account you agree to our 
-            a(href='#', style='color:dodgerblue') Terms & Privacy
+            a(href='#', style='color:dodgerblue;') Terms & Privacy
             | .
-          .clearfix
-            button.cancelbtn(type='button', onclick="document.getElementById('id01').style.display='none'") Cancel
-            button.signupbtn(type='submit') Sign Up
+          // <div class="clearfix">
+          // <button class="cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'">
+          // Cancel</button><button class="signupbtn" type="submit">Sign Up</button></div>
+          input.custom_button(type='submit', value='Submit')
+          // </div>
+      .col-md-2(style='width:80px;height:40px;')
+        // <div class="row" style="display: none;" id = "hello">
+        img(src='../images/vines.png')
     script.
-      // Get the modal
-      var modal = document.getElementById('id01');
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-      if (event.target == modal) {
-      modal.style.display = "none";
+      $(document).ready(function() {
+      (function () {
+      var elem = document.getElementById("caterpillar");
+      var pos_left = 0;
+      var pos_top = 0;
+      var id = setInterval(frame, 10);
+      function frame() {
+      if (pos_left == 150) {
+      pos_top++;
+      elem.style.top = pos_top + "px";
+      if (pos_top == 350){
+      elem.style.position = "static";
+      document.getElementById("hello").style.display = "block";
+      clearInterval(id);
       }
+      } else {
+      pos_left++;
+      elem.style.left = pos_left + "px";
       }
+      }})();
+      });
